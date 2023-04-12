@@ -28,7 +28,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'max:50', 'email', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()]
+            'password' => ['required', Rules\Password::defaults()]
         ]);
 
         // memasukkan request (inputan) ke dalam database
@@ -42,7 +42,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // mengarahkan ke home setelah berhasil regist
-        return redirect('/home');
+        return redirect('/login');
     }
 
     public function doLogin(Request $request)
