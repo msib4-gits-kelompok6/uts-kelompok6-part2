@@ -22,12 +22,12 @@ Route::get('/', [HomeController::class, 'index']);
 
 // auth
 
-Route::get('/login', [AuthController::class, "login"])->name('login');
 Route::get('/register', [AuthController::class, "register"])->name('register');
+Route::get('/login', [AuthController::class, "login"])->name('login');
 Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
-Route::post('/login', [AuthController::class, "dologin"])->name('do.login');
+Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
 
 
 

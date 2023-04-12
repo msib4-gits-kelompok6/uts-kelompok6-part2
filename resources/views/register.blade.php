@@ -33,23 +33,25 @@
                                     <div id="emailHelp" class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <input type="password"
                                         class="form-control form-control-user @error('password') is-invalid                                            
                                         @enderror"
-                                        id="exampleInputPassword" placeholder="Password" name="password">
+                                        id="password" placeholder="Password" name="password">
                                     @error('password')
                                         <div id="passwordHelp" class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="password"
-                                        class="form-control form-control-user @error('password_confirm') is-invalid                                            
+                                        class="form-control form-control-user @error('password_confirmation') is-invalid                                            
                                         @enderror"
-                                        id="exampleRepeatPassword" placeholder="Repeat Password" name="password_confirm">
-                                    @error('password_confirm')
-                                        <div id="passwordConfirmHelp" class="invalid-feedback">{{ $message }}</div>
+                                        id="exampleRepeatPassword" placeholder="Repeat Password"
+                                        name="password_confirmation">
+                                    @error('password_confirmation')
+                                        <div id="passwordConfirmationHelp" class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
