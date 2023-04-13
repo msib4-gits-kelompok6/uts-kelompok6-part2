@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Category - Edit')
+
 @section('content')
     <div class="text-center my-5">
         <h3>Edit Category</h3>

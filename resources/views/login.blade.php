@@ -1,6 +1,6 @@
 @extends('layouts.auths')
 
-{{-- @section('title', 'login') --}}
+@section('title', 'Login')
 
 @section('content')
     <div class="row justify-content-center">

@@ -38,7 +38,7 @@
                 <h6 class="collapse-header">Admin Menu</h6>
                 <a class="collapse-item" href="{{ '/category' }}">Category</a>
                 <a class="collapse-item" href="{{ '/product' }}">Product</a>
-                <a class="collapse-item" href="{{ '/' }}">Transaction List</a>
+                <a class="collapse-item" href="{{ '/transaction' }}">Transaction List</a>
             </div>
         </div>
     </li>

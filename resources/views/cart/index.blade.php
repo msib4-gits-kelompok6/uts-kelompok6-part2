@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Cart')
+
 @section('content')
     <div class="carts my-5">
         <div class="text-center my-5">
@@ -60,6 +62,12 @@
                 <div class="alert alert-primary" role="alert">
                     Total Belanja : {{ $total_price }}
                 </div>
+                {{-- checkout --}}
+                <form action="{{ route('checkout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary"
+                        @if ($carts->isEmpty()) disabled @endif>Checkout</button>
+                </form>
             </div>
         </div>
     </div>

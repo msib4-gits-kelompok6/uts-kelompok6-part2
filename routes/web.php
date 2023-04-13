@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,49 +19,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
 // auth
-
 Route::get('/register', [AuthController::class, "register"])->name('register');
 Route::get('/login', [AuthController::class, "login"])->name('login');
 Route::get('/logout', [AuthController::class, "logout"])->name('logout');
-
 Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
 Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
 
-
-
-// category
-Route::middleware(['auth:web'])->group(function () {
-    Route::prefix('category')->group(function () {
-        Route::get('/', [CategoryController::class, 'index']);
-        Route::get('/add', [CategoryController::class, 'create']);
-        Route::get('/{id}/edit', [CategoryController::class, 'edit']);
-        Route::get('/{id}/delete', [CategoryController::class, 'destroy']);
-        Route::post('/', [CategoryController::class, 'store']);
-        Route::put('/{id}', [CategoryController::class, 'update']);
-    });
-});
-
-
+Route::get('/', [HomeController::class, 'index'])->middleware(['auth:web']);
 
 // product
-Route::middleware(['auth:web'])->group(function () {
-    Route::prefix('product')->group(function () {
-        Route::get('/', [ProductController::class, 'index']);
-        Route::get('/add', [ProductController::class, 'create']);
-        Route::get('/{id}/edit', [ProductController::class, 'edit']);
-        Route::get('/{id}/delete', [ProductController::class, 'destroy']);
-        Route::post('/', [ProductController::class, 'store']);
-        Route::put('/{id}', [ProductController::class, 'update']);
-    });
+Route::prefix('product')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/add', [ProductController::class, 'create']);
+    Route::get('/{id}/edit', [ProductController::class, 'edit']);
+    Route::get('/{id}/delete', [ProductController::class, 'destroy']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::put('/{id}', [ProductController::class, 'update']);
+});
+
+// category
+Route::prefix('category')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/add', [CategoryController::class, 'create']);
+    Route::get('/{id}/edit', [CategoryController::class, 'edit']);
+    Route::get('/{id}/delete', [CategoryController::class, 'destroy']);
+    Route::post('/', [CategoryController::class, 'store']);
+    Route::put('/{id}', [CategoryController::class, 'update']);
 });
 
 // cart
-Route::post('/{product}', [CartController::class, 'add_toCart'])->name('add_toCart');
+Route::post('/cart/{product}', [CartController::class, 'add_toCart'])->name('add_toCart');
 Route::get('/cart', [CartController::class, 'show_cart'])->name('show_cart');
 Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
 Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
 
 // transaction
+Route::post('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
+Route::get('/transaction', [TransactionController::class, 'index']);
+Route::get('/transaction/{transaction}', [TransactionController::class, 'show_detail'])->name('show_detail');

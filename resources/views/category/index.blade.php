@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Category')
+
 @section('content')
     <div class="categories my-5">
         <div class="text-center my-5">
