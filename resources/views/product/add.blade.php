@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Product - Add')
+
 @section('content')
     <div class="text-center my-5">
         <h3>Tambah Product</h3>

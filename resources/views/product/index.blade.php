@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Product')
+
 @section('content')
     <div class="products my-5">
         <div class="text-center my-5">
@@ -29,7 +31,7 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td><img src="{{ Storage::url($product->image) }}" style="width: 18rem;"></td>
+                                <td><img src="{{ Storage::url($product->image) }}" style="width: 5rem;"></td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->stock }}</td>
